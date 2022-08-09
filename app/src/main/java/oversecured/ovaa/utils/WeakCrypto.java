@@ -14,7 +14,7 @@ public class WeakCrypto {
     public static String encrypt(String data) {
         try {
             SecretKeySpec secretKeySpec = new SecretKeySpec(KEY.getBytes(), "AES");
-            Cipher instance = Cipher.getInstance("AES");
+            Cipher instance = Cipher.getInstance("AES/GCM/NoPadding");
             instance.init(Cipher.ENCRYPT_MODE, secretKeySpec);
             return Base64.encodeToString(instance.doFinal(data.getBytes()), 0);
         }
